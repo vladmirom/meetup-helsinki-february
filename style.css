@@ -1,0 +1,137 @@
+/*
+Theme Name: Twenty Twenty-Five
+Theme URI: https://wordpress.org/themes/twentytwentyfive/
+Author: the WordPress team
+Author URI: https://wordpress.org
+Description: Twenty Twenty-Five emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.
+Requires at least: 6.7
+Tested up to: 6.7
+Requires PHP: 7.2
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwentyfive
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+*/
+
+/*
+ * Link styles
+ * https://github.com/WordPress/gutenberg/issues/42319
+ */
+a {
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: .1em;
+}
+
+/* Focus styles */
+:where(.wp-site-blocks *:focus) {
+	outline-width: 2px;
+	outline-style: solid;
+}
+
+/* Increase the bottom margin on submenus, so that the outline is visible. */
+.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
+	margin-bottom: 3px;
+}
+
+/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
+.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
+	outline-offset: 4px;
+}
+
+/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
+.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	outline-offset: 0;
+}
+
+/*
+ * Progressive enhancement to reduce widows and orphans
+ * https://github.com/WordPress/gutenberg/issues/55190
+ */
+h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
+	text-wrap: pretty;
+}
+
+/*
+ * Change the position of the more block on the front, by making it a block level element.
+ * https://github.com/WordPress/gutenberg/issues/65934
+*/
+.more-link {
+	display: block;
+}
+
+.meetup__wrapper { 
+	max-width: 300px;
+	padding: 1.5rem;
+	background-color: white;
+	border-radius: 1rem;
+}
+
+.meetup__content {
+	display: inline-flex;
+}
+
+.meetup__content-image {
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 0.25rem;
+}
+
+.meetup__content-text {
+	margin-left: 1rem;
+}
+
+.meetup__content-text-title {
+	font-weight: 700;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	margin: 0 0 0.25rem 0;
+}
+
+.meetup__content-text-subtitle {
+	display: inline-flex;
+	align-items: center;
+	font-weight: normal;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	color: #707070;
+
+	& p {
+		margin: 0 0.25rem 0 0;
+	}
+}
+
+.meetup__content-text-tooltip-icon {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+
+	&:hover {
+		& + .meetup__content-text-tooltip { 
+			opacity: 1;
+		}
+	}
+
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 1.125rem;
+		height: 1.125rem;
+		background-image: url("data:image/svg+xml,%3Csvg height='18' width='18' viewBox='0 0 18 18' fill='%23707070' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cpath d='M9 16A7 7 0 119 2a7 7 0 010 14zm-.837-5.437H9.77v-.3c.072-.636.684-1.128 1.26-1.68.516-.504.984-1.056.984-1.884 0-1.272-.9-2.16-2.664-2.16-1.704 0-2.892.984-2.964 2.652h1.668c.084-.756.528-1.236 1.188-1.236.636 0 .924.336.924.888 0 .48-.384.864-.816 1.284-.564.552-1.188 1.14-1.188 2.076v.36zm.792 3.182c.6 0 1.092-.456 1.092-1.032 0-.588-.492-1.044-1.092-1.044-.612 0-1.104.456-1.104 1.044 0 .576.492 1.032 1.104 1.032z'%3E%3C/path%3E%3C/svg%3E%0A");
+		margin-left: 0.25rem;
+		cursor: pointer;
+	}
+}
+
+.meetup__content-text-tooltip {
+	position: absolute;
+	bottom: 1.5rem;
+	opacity: 0;
+	max-width: 300px;
+	background-color: #353e48;
+	color: white;
+	padding: 1rem 1.5rem;
+	border-radius: 2px;
+	font-size: 0.875rem;
+	transition: all 0.4s ease;
+}
